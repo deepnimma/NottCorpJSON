@@ -11,6 +11,8 @@ import FakerView from '../views/FakerView.vue'
 import CsvView from '../views/CsvView.vue'
 import YamlView from '../views/YamlView.vue'
 import TypeScriptView from '../views/TypeScriptView.vue'
+import StatsView from '../views/StatsView.vue'
+import FlattenerView from '../views/FlattenerView.vue'
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,5 +29,7 @@ export const router = createRouter({
     { path: '/csv',        name: 'csv',        component: CsvView        },
     { path: '/yaml',       name: 'yaml',       component: YamlView       },
     { path: '/typescript', name: 'typescript', component: TypeScriptView },
+    { path: '/stats',      name: 'stats',      component: StatsView      },
+    { path: '/flattener',  name: 'flattener',  component: FlattenerView  },
   ],
 })

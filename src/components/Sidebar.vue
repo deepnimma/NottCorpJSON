@@ -117,6 +117,29 @@
       </div>
 
       <div class="nav-group">
+        <span class="group-label">Analyze</span>
+
+        <RouterLink to="/stats" class="nav-item" :title="collapsed ? 'Stats' : ''">
+          <span class="nav-icon">
+            <svg width="17" height="17" viewBox="0 0 22 22" fill="none">
+              <path d="M4 18V12M8 18V8M12 18V10M16 18V5M20 18H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="nav-label">Stats</span>
+        </RouterLink>
+
+        <RouterLink to="/flattener" class="nav-item" :title="collapsed ? 'Flattener' : ''">
+          <span class="nav-icon">
+            <svg width="17" height="17" viewBox="0 0 22 22" fill="none">
+              <path d="M4 6h14M4 11h14M4 16h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M8 3l-4 3 4 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="nav-label">Flattener</span>
+        </RouterLink>
+      </div>
+
+      <div class="nav-group">
         <span class="group-label">Convert</span>
 
         <RouterLink to="/csv" class="nav-item" :title="collapsed ? 'CSV' : ''">
