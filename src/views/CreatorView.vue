@@ -1,5 +1,5 @@
 <template>
-  <div class="generator" :class="{ 'theme-light': isLight }">
+  <div class="creator" :class="{ 'theme-light': isLight }">
     <!-- Ambient background -->
     <div class="bg-layer" aria-hidden="true">
       <div class="bg-glow bg-glow-1"></div>
@@ -20,7 +20,7 @@
           <span class="brand-name">NottA<strong>SchemaGen</strong></span>
         </RouterLink>
         <nav class="header-nav">
-          <RouterLink to="/generator" class="nav-link nav-link-active">Generator</RouterLink>
+          <RouterLink to="/creator" class="nav-link nav-link-active">Creator</RouterLink>
           <RouterLink to="/validator" class="nav-link">Validator</RouterLink>
           <RouterLink to="/formatter" class="nav-link">Formatter</RouterLink>
           <RouterLink to="/diff" class="nav-link">Diff</RouterLink>
@@ -472,7 +472,7 @@ function exportSchema() {
 
 <style scoped>
 /* ─── CSS variables (dark default — matte black + red) ───────── */
-.generator {
+.creator {
   --bg:          #141414;
   --surface:     #1c1c1c;
   --surface-2:   #222222;
@@ -494,7 +494,7 @@ function exportSchema() {
 }
 
 /* ─── Light theme ────────────────────────────────────────────── */
-.generator.theme-light {
+.creator.theme-light {
   --bg:         #f2f0f0;
   --surface:    #ffffff;
   --surface-2:  #f7f5f5;

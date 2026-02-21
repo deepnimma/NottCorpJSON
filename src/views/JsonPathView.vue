@@ -18,7 +18,7 @@
           <span class="brand-name">NottA<strong>SchemaGen</strong></span>
         </RouterLink>
         <nav class="header-nav">
-          <RouterLink to="/generator" class="nav-link">Generator</RouterLink>
+          <RouterLink to="/creator" class="nav-link">Creator</RouterLink>
           <RouterLink to="/validator" class="nav-link">Validator</RouterLink>
           <RouterLink to="/formatter" class="nav-link">Formatter</RouterLink>
           <RouterLink to="/diff" class="nav-link">Diff</RouterLink>

@@ -23,7 +23,8 @@
     <nav class="sidebar-nav">
       <div class="nav-group">
         <span class="group-label">Schema</span>
-        <RouterLink to="/generator" class="nav-item" :title="collapsed ? 'Generator' : ''">
+
+        <RouterLink to="/creator" class="nav-item" :title="collapsed ? 'Creator' : ''">
           <span class="nav-icon">
             <svg width="17" height="17" viewBox="0 0 22 22" fill="none">
               <rect x="2" y="2" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/>
@@ -32,7 +33,41 @@
               <path d="M15 14l1 1 2-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
-          <span class="nav-label">Generator</span>
+          <span class="nav-label">Creator</span>
+        </RouterLink>
+
+        <RouterLink to="/inferrer" class="nav-item" :title="collapsed ? 'Inferrer' : ''">
+          <span class="nav-icon">
+            <svg width="17" height="17" viewBox="0 0 22 22" fill="none">
+              <path d="M3 19l9-9M14 3l5 5-9.5 9.5-5-5L14 3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M18 2l2 2M19 5l1-1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="nav-label">Inferrer</span>
+        </RouterLink>
+
+        <RouterLink to="/merger" class="nav-item" :title="collapsed ? 'Merger' : ''">
+          <span class="nav-icon">
+            <svg width="17" height="17" viewBox="0 0 22 22" fill="none">
+              <path d="M4 5l5 6-5 6M18 5l-5 6 5 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 11h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="nav-label">Merger</span>
+        </RouterLink>
+
+        <RouterLink to="/faker" class="nav-item" :title="collapsed ? 'Faker' : ''">
+          <span class="nav-icon">
+            <svg width="17" height="17" viewBox="0 0 22 22" fill="none">
+              <rect x="2" y="2" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="7" cy="7" r="1.5" fill="currentColor"/>
+              <circle cx="15" cy="7" r="1.5" fill="currentColor"/>
+              <circle cx="7" cy="15" r="1.5" fill="currentColor"/>
+              <circle cx="15" cy="15" r="1.5" fill="currentColor"/>
+              <circle cx="11" cy="11" r="1.5" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="nav-label">Faker</span>
         </RouterLink>
 
         <RouterLink to="/validator" class="nav-item" :title="collapsed ? 'Validator' : ''">
@@ -78,6 +113,39 @@
             </svg>
           </span>
           <span class="nav-label">JSONPath</span>
+        </RouterLink>
+      </div>
+
+      <div class="nav-group">
+        <span class="group-label">Convert</span>
+
+        <RouterLink to="/csv" class="nav-item" :title="collapsed ? 'CSV' : ''">
+          <span class="nav-icon">
+            <svg width="17" height="17" viewBox="0 0 22 22" fill="none">
+              <rect x="2" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M2 9h18M8 9v9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="nav-label">CSV</span>
+        </RouterLink>
+
+        <RouterLink to="/yaml" class="nav-item" :title="collapsed ? 'YAML' : ''">
+          <span class="nav-icon">
+            <svg width="17" height="17" viewBox="0 0 22 22" fill="none">
+              <path d="M4 6h14M6 10h10M4 14h8M6 18h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="nav-label">YAML</span>
+        </RouterLink>
+
+        <RouterLink to="/typescript" class="nav-item" :title="collapsed ? 'TypeScript' : ''">
+          <span class="nav-icon">
+            <svg width="17" height="17" viewBox="0 0 22 22" fill="none">
+              <rect x="2" y="2" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6 9h5M8.5 9v7M13 9h4v2h-4v2h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="nav-label">TypeScript</span>
         </RouterLink>
       </div>
     </nav>
