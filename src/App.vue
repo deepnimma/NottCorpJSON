@@ -4,6 +4,7 @@
     <div class="app-content">
       <RouterView />
     </div>
+    <div class="version-display">v{{ version }}</div>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import { ref, watch } from 'vue'
 import { RouterView } from 'vue-router'
 import Sidebar from './components/Sidebar.vue'
 
+const version = import.meta.env.APP_VERSION
 const stored = localStorage.getItem('sidebar-collapsed')
 const sidebarCollapsed = ref(stored === null ? true : stored === 'true')
 
@@ -22,6 +24,7 @@ watch(sidebarCollapsed, v => localStorage.setItem('sidebar-collapsed', String(v)
 .app-shell {
   display: flex;
   min-height: 100vh;
+  position: relative;
 }
 
 .app-content {
@@ -34,5 +37,13 @@ watch(sidebarCollapsed, v => localStorage.setItem('sidebar-collapsed', String(v)
 
 .app-shell.sidebar-open .app-content {
   margin-left: 220px;
+}
+
+.version-display {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 12px;
+  color: #888;
 }
 </style>
