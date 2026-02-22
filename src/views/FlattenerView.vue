@@ -236,8 +236,6 @@ function exportOutput() {
 
 /* Background */
 .bg-layer { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
-.bg-glow-1 { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(127,16,16,0.13) 0%, transparent 70%); top: -150px; right: -100px; }
-.bg-glow-2 { position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(90,10,10,0.10) 0%, transparent 70%); bottom: 50px; left: 100px; }
 .bg-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.3; }
 
 /* Header */

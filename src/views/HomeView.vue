@@ -1,8 +1,6 @@
 <template>
   <div class="home" :class="{ 'theme-light': isLight }">
     <div class="bg-layer" aria-hidden="true">
-      <div class="bg-glow bg-glow-1"></div>
-      <div class="bg-glow bg-glow-2"></div>
       <div class="bg-grid"></div>
     </div>
 
@@ -29,264 +27,265 @@
       </button>
     </header>
 
-    <main class="hero">
-      <p class="hero-eyebrow">JSON Utilities</p>
-      <h1 class="hero-title">The JSON Toolset</h1>
-      <p class="hero-sub">Schema creation, inference, merging, validation, formatting, diffing, and conversion — all in one place.</p>
+    <main class="content">
+      <div class="hero">
+        <p class="hero-eyebrow">JSON Utilities</p>
+        <h1 class="hero-title">The JSON Toolset</h1>
+        <p class="hero-sub">Schema creation, inference, merging, validation, formatting, diffing, and conversion — all in one place.</p>
+      </div>
 
-      <div class="tool-grid">
-        <RouterLink to="/creator" class="tool-card tool-schema">
-          <div class="tool-icon">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <rect x="2" y="2" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M7 8h8M7 11h5M7 14h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <circle cx="16" cy="14" r="3" fill="currentColor" opacity="0.3"/>
-              <path d="M15 14l1 1 2-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="tool-body">
-            <div class="tool-top">
-              <span class="tool-name">Creator</span>
-              <span class="tool-tag">Schema</span>
-            </div>
-            <p class="tool-desc">Build JSON Schema definitions visually, field-by-field, with full type support.</p>
-          </div>
-          <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </RouterLink>
+      <div class="categories">
 
-        <RouterLink to="/validator" class="tool-card tool-validate">
-          <div class="tool-icon">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M7 11.5l3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+        <!-- Schema -->
+        <section class="category">
+          <div class="category-header">
+            <span class="category-label">Schema</span>
+            <span class="category-count">5 tools</span>
           </div>
-          <div class="tool-body">
-            <div class="tool-top">
-              <span class="tool-name">Validator</span>
-              <span class="tool-tag">Schema</span>
-            </div>
-            <p class="tool-desc">Validate any JSON document against a JSON Schema and see detailed error paths.</p>
-          </div>
-          <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </RouterLink>
+          <div class="tool-grid">
+            <RouterLink to="/creator" class="tool-card">
+              <div class="tool-icon">
+                <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                  <rect x="2" y="2" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M7 8h8M7 11h5M7 14h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="16" cy="14" r="3" fill="currentColor" opacity="0.3"/>
+                  <path d="M15 14l1 1 2-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="tool-body">
+                <span class="tool-name">Creator</span>
+                <p class="tool-desc">Build JSON Schema definitions visually, field-by-field, with full type support.</p>
+              </div>
+              <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </RouterLink>
 
-        <RouterLink to="/formatter" class="tool-card tool-format">
-          <div class="tool-icon">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <path d="M4 6h14M4 11h9M4 16h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M17 15l2 2-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="tool-body">
-            <div class="tool-top">
-              <span class="tool-name">Formatter</span>
-              <span class="tool-tag">Format</span>
-            </div>
-            <p class="tool-desc">Prettify or minify JSON with configurable indentation. Instant syntax highlighting.</p>
-          </div>
-          <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </RouterLink>
+            <RouterLink to="/inferrer" class="tool-card">
+              <div class="tool-icon">
+                <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                  <path d="M3 19l9-9M14 3l5 5-9.5 9.5-5-5L14 3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M18 2l2 2M19 5l1-1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="tool-body">
+                <span class="tool-name">Inferrer</span>
+                <p class="tool-desc">Paste any JSON object and get an inferred JSON Schema with detected types instantly.</p>
+              </div>
+              <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </RouterLink>
 
-        <RouterLink to="/diff" class="tool-card tool-diff">
-          <div class="tool-icon">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <rect x="2" y="4" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
-              <rect x="12" y="4" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M5 9h2M5 12h4M14 9h4M14 12h2M14 15h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="tool-body">
-            <div class="tool-top">
-              <span class="tool-name">Diff</span>
-              <span class="tool-tag">Compare</span>
-            </div>
-            <p class="tool-desc">Compare two JSON documents and see exactly what was added, removed, or changed.</p>
-          </div>
-          <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </RouterLink>
+            <RouterLink to="/merger" class="tool-card">
+              <div class="tool-icon">
+                <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                  <path d="M4 5l5 6-5 6M18 5l-5 6 5 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9 11h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="tool-body">
+                <span class="tool-name">Merger</span>
+                <p class="tool-desc">Merge two JSON Schemas via allOf wrapping, deep property merge, or anyOf composition.</p>
+              </div>
+              <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </RouterLink>
 
-        <RouterLink to="/jsonpath" class="tool-card tool-path">
-          <div class="tool-icon">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M7 11h8M12 8l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="7" cy="11" r="1.5" fill="currentColor"/>
-            </svg>
-          </div>
-          <div class="tool-body">
-            <div class="tool-top">
-              <span class="tool-name">JSONPath</span>
-              <span class="tool-tag">Query</span>
-            </div>
-            <p class="tool-desc">Query JSON with JSONPath expressions. Supports wildcards, recursive descent, and indexing.</p>
-          </div>
-          <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </RouterLink>
+            <RouterLink to="/faker" class="tool-card">
+              <div class="tool-icon">
+                <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                  <rect x="2" y="2" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="7" cy="7" r="1.5" fill="currentColor"/>
+                  <circle cx="15" cy="7" r="1.5" fill="currentColor"/>
+                  <circle cx="7" cy="15" r="1.5" fill="currentColor"/>
+                  <circle cx="15" cy="15" r="1.5" fill="currentColor"/>
+                  <circle cx="11" cy="11" r="1.5" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="tool-body">
+                <span class="tool-name">Faker</span>
+                <p class="tool-desc">Generate realistic fake JSON data from any JSON Schema — strings, numbers, enums, formats.</p>
+              </div>
+              <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </RouterLink>
 
-        <RouterLink to="/inferrer" class="tool-card tool-infer">
-          <div class="tool-icon">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <path d="M3 19l9-9M14 3l5 5-9.5 9.5-5-5L14 3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M18 2l2 2M19 5l1-1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-            </svg>
+            <RouterLink to="/validator" class="tool-card">
+              <div class="tool-icon">
+                <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                  <circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M7 11.5l3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="tool-body">
+                <span class="tool-name">Validator</span>
+                <p class="tool-desc">Validate any JSON document against a JSON Schema and see detailed error paths.</p>
+              </div>
+              <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </RouterLink>
           </div>
-          <div class="tool-body">
-            <div class="tool-top">
-              <span class="tool-name">Inferrer</span>
-              <span class="tool-tag">Schema</span>
-            </div>
-            <p class="tool-desc">Paste any JSON object and get an inferred JSON Schema with detected types instantly.</p>
-          </div>
-          <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </RouterLink>
+        </section>
 
-        <RouterLink to="/merger" class="tool-card tool-merge">
-          <div class="tool-icon">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <path d="M4 5l5 6-5 6M18 5l-5 6 5 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M9 11h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
+        <!-- Utilities -->
+        <section class="category">
+          <div class="category-header">
+            <span class="category-label">Utilities</span>
+            <span class="category-count">3 tools</span>
           </div>
-          <div class="tool-body">
-            <div class="tool-top">
-              <span class="tool-name">Merger</span>
-              <span class="tool-tag">Schema</span>
-            </div>
-            <p class="tool-desc">Merge two JSON Schemas via allOf wrapping, deep property merge, or anyOf composition.</p>
-          </div>
-          <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </RouterLink>
+          <div class="tool-grid">
+            <RouterLink to="/formatter" class="tool-card">
+              <div class="tool-icon">
+                <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                  <path d="M4 6h14M4 11h9M4 16h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M17 15l2 2-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="tool-body">
+                <span class="tool-name">Formatter</span>
+                <p class="tool-desc">Prettify or minify JSON with configurable indentation. Instant syntax highlighting.</p>
+              </div>
+              <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </RouterLink>
 
-        <RouterLink to="/faker" class="tool-card tool-fake">
-          <div class="tool-icon">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <rect x="2" y="2" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/>
-              <circle cx="7" cy="7" r="1.5" fill="currentColor"/>
-              <circle cx="15" cy="7" r="1.5" fill="currentColor"/>
-              <circle cx="7" cy="15" r="1.5" fill="currentColor"/>
-              <circle cx="15" cy="15" r="1.5" fill="currentColor"/>
-              <circle cx="11" cy="11" r="1.5" fill="currentColor"/>
-            </svg>
-          </div>
-          <div class="tool-body">
-            <div class="tool-top">
-              <span class="tool-name">Faker</span>
-              <span class="tool-tag">Schema</span>
-            </div>
-            <p class="tool-desc">Generate realistic fake JSON data from any JSON Schema — strings, numbers, enums, formats.</p>
-          </div>
-          <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </RouterLink>
+            <RouterLink to="/diff" class="tool-card">
+              <div class="tool-icon">
+                <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                  <rect x="2" y="4" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <rect x="12" y="4" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M5 9h2M5 12h4M14 9h4M14 12h2M14 15h3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="tool-body">
+                <span class="tool-name">Diff</span>
+                <p class="tool-desc">Compare two JSON documents and see exactly what was added, removed, or changed.</p>
+              </div>
+              <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </RouterLink>
 
-        <RouterLink to="/csv" class="tool-card tool-csv">
-          <div class="tool-icon">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <rect x="2" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M2 9h18M8 9v9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-            </svg>
+            <RouterLink to="/jsonpath" class="tool-card">
+              <div class="tool-icon">
+                <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                  <circle cx="11" cy="11" r="9" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M7 11h8M12 8l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="7" cy="11" r="1.5" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="tool-body">
+                <span class="tool-name">JSONPath</span>
+                <p class="tool-desc">Query JSON with JSONPath expressions. Supports wildcards, recursive descent, and indexing.</p>
+              </div>
+              <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </RouterLink>
           </div>
-          <div class="tool-body">
-            <div class="tool-top">
-              <span class="tool-name">CSV</span>
-              <span class="tool-tag">Convert</span>
-            </div>
-            <p class="tool-desc">Convert JSON arrays to CSV tables and back. Handles quoted fields and nested values.</p>
-          </div>
-          <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </RouterLink>
+        </section>
 
-        <RouterLink to="/yaml" class="tool-card tool-yaml">
-          <div class="tool-icon">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <path d="M4 6h14M6 10h10M4 14h8M6 18h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
+        <!-- Analyze -->
+        <section class="category">
+          <div class="category-header">
+            <span class="category-label">Analyze</span>
+            <span class="category-count">2 tools</span>
           </div>
-          <div class="tool-body">
-            <div class="tool-top">
-              <span class="tool-name">YAML</span>
-              <span class="tool-tag">Convert</span>
-            </div>
-            <p class="tool-desc">Instantly convert between JSON and YAML in both directions with clean formatting.</p>
-          </div>
-          <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </RouterLink>
+          <div class="tool-grid">
+            <RouterLink to="/stats" class="tool-card">
+              <div class="tool-icon">
+                <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                  <path d="M4 18V12M8 18V8M12 18V10M16 18V5M20 18H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="tool-body">
+                <span class="tool-name">Stats</span>
+                <p class="tool-desc">Analyze JSON structure: key counts, depth, types breakdown, null rates, and size metrics.</p>
+              </div>
+              <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </RouterLink>
 
-        <RouterLink to="/typescript" class="tool-card tool-ts">
-          <div class="tool-icon">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <rect x="2" y="2" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M6 9h5M8.5 9v7M13 9h4v2h-4v2h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <RouterLink to="/flattener" class="tool-card">
+              <div class="tool-icon">
+                <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                  <path d="M4 6h14M4 11h14M4 16h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M8 3l-4 3 4 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="tool-body">
+                <span class="tool-name">Flattener</span>
+                <p class="tool-desc">Flatten nested JSON to dot-notation keys or unflatten dot-keys back to nested objects.</p>
+              </div>
+              <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </RouterLink>
           </div>
-          <div class="tool-body">
-            <div class="tool-top">
-              <span class="tool-name">TypeScript</span>
-              <span class="tool-tag">Convert</span>
-            </div>
-            <p class="tool-desc">Generate TypeScript interfaces from JSON objects, or sample JSON from interface definitions.</p>
-          </div>
-          <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </RouterLink>
+        </section>
 
-        <RouterLink to="/stats" class="tool-card tool-stats">
-          <div class="tool-icon">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <path d="M4 18V12M8 18V8M12 18V10M16 18V5M20 18H2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+        <!-- Convert -->
+        <section class="category">
+          <div class="category-header">
+            <span class="category-label">Convert</span>
+            <span class="category-count">3 tools</span>
           </div>
-          <div class="tool-body">
-            <div class="tool-top">
-              <span class="tool-name">Stats</span>
-              <span class="tool-tag">Analyze</span>
-            </div>
-            <p class="tool-desc">Analyze JSON structure: key counts, depth, types breakdown, null rates, and size metrics.</p>
-          </div>
-          <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </RouterLink>
+          <div class="tool-grid">
+            <RouterLink to="/csv" class="tool-card">
+              <div class="tool-icon">
+                <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                  <rect x="2" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M2 9h18M8 9v9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="tool-body">
+                <span class="tool-name">CSV</span>
+                <p class="tool-desc">Convert JSON arrays to CSV tables and back. Handles quoted fields and nested values.</p>
+              </div>
+              <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </RouterLink>
 
-        <RouterLink to="/flattener" class="tool-card tool-flat">
-          <div class="tool-icon">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <path d="M4 6h14M4 11h14M4 16h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M8 3l-4 3 4 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <RouterLink to="/yaml" class="tool-card">
+              <div class="tool-icon">
+                <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                  <path d="M4 6h14M6 10h10M4 14h8M6 18h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="tool-body">
+                <span class="tool-name">YAML</span>
+                <p class="tool-desc">Instantly convert between JSON and YAML in both directions with clean formatting.</p>
+              </div>
+              <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </RouterLink>
+
+            <RouterLink to="/typescript" class="tool-card">
+              <div class="tool-icon">
+                <svg width="20" height="20" viewBox="0 0 22 22" fill="none">
+                  <rect x="2" y="2" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M6 9h5M8.5 9v7M13 9h4v2h-4v2h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="tool-body">
+                <span class="tool-name">TypeScript</span>
+                <p class="tool-desc">Generate TypeScript interfaces from JSON objects, or sample JSON from interface definitions.</p>
+              </div>
+              <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </RouterLink>
           </div>
-          <div class="tool-body">
-            <div class="tool-top">
-              <span class="tool-name">Flattener</span>
-              <span class="tool-tag">Analyze</span>
-            </div>
-            <p class="tool-desc">Flatten nested JSON to dot-notation keys or unflatten dot-keys back to nested objects.</p>
-          </div>
-          <svg class="tool-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </RouterLink>
+        </section>
+
       </div>
     </main>
   </div>
@@ -334,10 +333,6 @@ const isLight = ref(false)
 }
 
 .bg-layer { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
-.bg-glow { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.18; }
-.theme-light .bg-glow { opacity: 0.09; }
-.bg-glow-1 { width: 600px; height: 600px; top: -200px; left: -150px; background: radial-gradient(circle, #7f1010, transparent 70%); }
-.bg-glow-2 { width: 400px; height: 400px; bottom: -100px; right: -80px; background: radial-gradient(circle, #5a0a0a, transparent 70%); }
 .bg-grid {
   position: absolute; inset: 0;
   background-image:
@@ -371,91 +366,101 @@ const isLight = ref(false)
 }
 .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
 
+/* Content */
+.content {
+  position: relative; z-index: 1;
+  flex: 1;
+  padding: 48px 40px 64px;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
 /* Hero */
 .hero {
-  position: relative; z-index: 1;
-  flex: 1; display: flex; flex-direction: column;
-  align-items: center;
-  padding: 52px 32px 48px;
-  gap: 0;
+  margin-bottom: 48px;
 }
 
 .hero-eyebrow {
   font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
   letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--accent); margin: 0 0 14px;
+  color: var(--accent); margin: 0 0 10px;
 }
 
 .hero-title {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(28px, 4vw, 52px);
+  font-size: clamp(24px, 3vw, 40px);
   font-weight: 800; letter-spacing: -0.02em;
-  color: var(--text); margin: 0 0 12px;
-  text-align: center;
+  color: var(--text); margin: 0 0 10px;
 }
 
 .hero-sub {
-  font-size: 15px; color: var(--text-muted);
-  margin: 0 0 40px; text-align: center;
-  max-width: 500px; line-height: 1.6;
+  font-size: 14px; color: var(--text-muted);
+  margin: 0; max-width: 520px; line-height: 1.6;
+}
+
+/* Categories */
+.categories { display: flex; flex-direction: column; gap: 36px; }
+
+.category-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 12px;
+}
+
+.category-label {
+  font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.category-count {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  color: var(--text-muted); opacity: 0.5;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 4px; padding: 1px 6px;
 }
 
 /* Tool grid */
 .tool-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 12px;
-  width: 100%; max-width: 920px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 8px;
 }
 
 .tool-card {
-  display: flex; align-items: center; gap: 16px;
-  padding: 18px 20px;
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 10px;
   text-decoration: none; color: var(--text);
-  transition: border-color 0.18s, background 0.18s, transform 0.18s;
-  position: relative; overflow: hidden;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
   cursor: pointer;
 }
-.tool-card::before {
-  content: '';
-  position: absolute; inset: 0;
-  opacity: 0; transition: opacity 0.18s;
-  border-radius: 12px;
-}
 .tool-card:hover { border-color: var(--accent); background: var(--surface-2); transform: translateY(-1px); }
-.tool-card:hover::before { opacity: 1; }
 .tool-card:hover .tool-arrow { color: var(--accent); transform: translateX(3px); }
 
 .tool-icon {
-  width: 44px; height: 44px; flex-shrink: 0;
+  width: 38px; height: 38px; flex-shrink: 0;
   display: flex; align-items: center; justify-content: center;
   background: var(--accent-dim); border: 1px solid var(--accent-glow);
-  border-radius: 10px; color: var(--accent);
+  border-radius: 8px; color: var(--accent);
 }
 
 .tool-body { flex: 1; min-width: 0; }
-.tool-top { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
 .tool-name {
-  font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700;
-  color: var(--text); letter-spacing: -0.01em;
-}
-.tool-tag {
-  font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.07em;
-  color: var(--text-muted); background: var(--surface-2);
-  border: 1px solid var(--border); border-radius: 4px;
-  padding: 2px 6px;
+  display: block;
+  font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+  color: var(--text); letter-spacing: -0.01em; margin-bottom: 3px;
 }
 .tool-desc {
-  font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--text-muted);
+  font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--text-muted);
   margin: 0; line-height: 1.5;
 }
 
 .tool-arrow {
   color: var(--text-muted); flex-shrink: 0;
-  transition: color 0.18s, transform 0.18s;
+  transition: color 0.15s, transform 0.15s;
 }
 </style>

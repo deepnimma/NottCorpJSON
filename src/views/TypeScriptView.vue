@@ -1,8 +1,6 @@
 <template>
   <div class="ts-view" :class="{ 'theme-light': isLight }">
     <div class="bg-layer" aria-hidden="true">
-      <div class="bg-glow bg-glow-1"></div>
-      <div class="bg-glow bg-glow-2"></div>
       <div class="bg-grid"></div>
     </div>
 
@@ -277,10 +275,6 @@ async function copyOutput() {
 }
 
 .bg-layer { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
-.bg-glow { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.18; }
-.theme-light .bg-glow { opacity: 0.09; }
-.bg-glow-1 { width: 600px; height: 600px; top: -200px; left: -150px; background: radial-gradient(circle, #7f1010, transparent 70%); }
-.bg-glow-2 { width: 400px; height: 400px; bottom: -100px; right: -80px; background: radial-gradient(circle, #5a0a0a, transparent 70%); }
 .bg-grid {
   position: absolute; inset: 0;
   background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);

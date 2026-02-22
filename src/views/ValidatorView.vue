@@ -2,8 +2,6 @@
   <div class="validator" :class="{ 'theme-light': isLight }">
     <!-- Ambient background -->
     <div class="bg-layer" aria-hidden="true">
-      <div class="bg-glow bg-glow-1"></div>
-      <div class="bg-glow bg-glow-2"></div>
       <div class="bg-grid"></div>
     </div>
 
@@ -418,23 +416,6 @@ function validate() {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-}
-.bg-glow {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.15;
-}
-.theme-light .bg-glow { opacity: 0.08; }
-.bg-glow-1 {
-  width: 500px; height: 500px;
-  top: -150px; right: -100px;
-  background: radial-gradient(circle, #7f1010, transparent 70%);
-}
-.bg-glow-2 {
-  width: 400px; height: 400px;
-  bottom: -100px; left: -50px;
-  background: radial-gradient(circle, #5a0a0a, transparent 70%);
 }
 .bg-grid {
   position: absolute;
