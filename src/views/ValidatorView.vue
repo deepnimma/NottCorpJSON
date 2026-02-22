@@ -1,45 +1,11 @@
 <template>
-  <div class="validator" :class="{ 'theme-light': isLight }">
+  <div class="validator">
     <!-- Ambient background -->
     <div class="bg-layer" aria-hidden="true">
       <div class="bg-grid"></div>
     </div>
 
     <!-- ══ Header ══════════════════════════════════════════════ -->
-    <header class="val-header">
-      <div class="header-left">
-        <RouterLink to="/" class="brand">
-          <svg class="brand-icon" width="28" height="28" viewBox="0 0 28 28" fill="none">
-            <path d="M14 2L25.26 8.5V21.5L14 28L2.74 21.5V8.5L14 2Z"
-              stroke="currentColor" stroke-width="1.5" fill="none"/>
-            <path d="M14 8L19.5 11.25V17.75L14 21L8.5 17.75V11.25L14 8Z"
-              fill="currentColor" opacity="0.3"/>
-          </svg>
-          <span class="brand-name">NottA<strong>SchemaGen</strong></span>
-        </RouterLink>
-        <nav class="header-nav">
-          <RouterLink to="/creator" class="nav-link">Creator</RouterLink>
-          <RouterLink to="/validator" class="nav-link nav-link-active">Validator</RouterLink>
-          <RouterLink to="/formatter" class="nav-link">Formatter</RouterLink>
-          <RouterLink to="/diff" class="nav-link">Diff</RouterLink>
-          <RouterLink to="/jsonpath" class="nav-link">JSONPath</RouterLink>
-        </nav>
-      </div>
-
-      <div class="header-actions">
-        <button class="theme-toggle" @click="isLight = !isLight" :title="isLight ? 'Switch to dark mode' : 'Switch to light mode'">
-          <svg v-if="isLight" width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <circle cx="8" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3.05 3.05l1.06 1.06M11.89 11.89l1.06 1.06M3.05 12.95l1.06-1.06M11.89 4.11l1.06-1.06"
-              stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <svg v-else width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M14 9.5A6 6 0 016.5 2 6.002 6.002 0 0014 9.5z"
-              stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
-    </header>
 
     <!-- ══ Two-pane layout ═════════════════════════════════════ -->
     <div class="val-layout">
@@ -163,7 +129,6 @@ import { RouterLink } from 'vue-router'
 
 // ─── Theme ───────────────────────────────────────────────────────────────────
 
-const isLight = ref(false)
 
 // ─── State ───────────────────────────────────────────────────────────────────
 
@@ -373,16 +338,6 @@ function validate() {
 <style scoped>
 /* ─── CSS variables ──────────────────────────────────────────── */
 .validator {
-  --bg:          #141414;
-  --surface:     #1c1c1c;
-  --surface-2:   #222222;
-  --border:      #2e2e2e;
-  --border-2:    #3a3a3a;
-  --text:        #e8e2e2;
-  --text-muted:  #6a6060;
-  --accent:      #dc2626;
-  --accent-dim:  rgba(220, 38, 38, 0.10);
-  --accent-glow: rgba(220, 38, 38, 0.20);
   --valid:       #22c55e;
   --valid-dim:   rgba(34, 197, 94, 0.10);
   --invalid:     #ef4444;
@@ -395,19 +350,6 @@ function validate() {
   flex-direction: column;
   position: relative;
   overflow: hidden;
-}
-
-.validator.theme-light {
-  --bg:         #f2f0f0;
-  --surface:    #ffffff;
-  --surface-2:  #f7f5f5;
-  --border:     #e0d8d8;
-  --border-2:   #cfc6c6;
-  --text:       #1f1414;
-  --text-muted: #8a7070;
-  --accent:     #b91c1c;
-  --accent-dim: rgba(185, 28, 28, 0.08);
-  --accent-glow:rgba(185, 28, 28, 0.15);
 }
 
 /* ─── Background atmosphere ─────────────────────────────────── */
@@ -426,79 +368,8 @@ function validate() {
   background-size: 40px 40px;
   opacity: 0.3;
 }
-.theme-light .bg-grid { opacity: 0.4; }
 
 /* ─── Header ─────────────────────────────────────────────────── */
-.val-header {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 28px;
-  height: 60px;
-  border-bottom: 1px solid var(--border);
-  background: color-mix(in srgb, var(--bg) 80%, transparent);
-  backdrop-filter: blur(20px);
-  flex-shrink: 0;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
-.brand-icon { color: var(--accent); }
-.brand-name {
-  font-family: 'Syne', sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  color: var(--text);
-  letter-spacing: -0.01em;
-}
-.brand-name strong { font-weight: 800; color: var(--accent); }
-
-.header-nav {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.nav-link {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-muted);
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 6px;
-  transition: color 0.15s, background 0.15s;
-}
-.nav-link:hover { color: var(--text); background: var(--surface-2); }
-.nav-link-active { color: var(--accent) !important; background: var(--accent-dim) !important; }
-
-.header-actions { display: flex; align-items: center; gap: 10px; }
-.theme-toggle {
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  color: var(--text-muted);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 34px;
-  transition: color 0.15s, border-color 0.15s;
-}
-.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
-
 /* ─── Layout ─────────────────────────────────────────────────── */
 .val-layout {
   display: flex;

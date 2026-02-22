@@ -1,5 +1,5 @@
 <template>
-  <div class="home" :class="{ 'theme-light': isLight }">
+  <div class="home">
     <div class="bg-layer" aria-hidden="true">
       <div class="bg-grid"></div>
     </div>
@@ -14,17 +14,6 @@
         </svg>
         <span class="brand-name">NottA<strong>SchemaGen</strong></span>
       </div>
-      <button class="theme-toggle" @click="isLight = !isLight">
-        <svg v-if="isLight" width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <circle cx="8" cy="8" r="3.5" stroke="currentColor" stroke-width="1.5"/>
-          <path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3.05 3.05l1.06 1.06M11.89 11.89l1.06 1.06M3.05 12.95l1.06-1.06M11.89 4.11l1.06-1.06"
-            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        <svg v-else width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M14 9.5A6 6 0 016.5 2 6.002 6.002 0 0014 9.5z"
-            stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-        </svg>
-      </button>
     </header>
 
     <main class="content">
@@ -292,25 +281,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-
-const isLight = ref(false)
 </script>
 
 <style scoped>
 .home {
-  --bg:          #141414;
-  --surface:     #1c1c1c;
-  --surface-2:   #222222;
-  --border:      #2e2e2e;
-  --border-2:    #3a3a3a;
-  --text:        #e8e2e2;
-  --text-muted:  #6a6060;
-  --accent:      #dc2626;
-  --accent-dim:  rgba(220, 38, 38, 0.10);
-  --accent-glow: rgba(220, 38, 38, 0.20);
-
   min-height: 100vh;
   background: var(--bg);
   color: var(--text);
@@ -319,19 +294,6 @@ const isLight = ref(false)
   position: relative;
   overflow: hidden;
 }
-.home.theme-light {
-  --bg:         #f2f0f0;
-  --surface:    #ffffff;
-  --surface-2:  #f7f5f5;
-  --border:     #e0d8d8;
-  --border-2:   #cfc6c6;
-  --text:       #1f1414;
-  --text-muted: #8a7070;
-  --accent:     #b91c1c;
-  --accent-dim: rgba(185, 28, 28, 0.08);
-  --accent-glow:rgba(185, 28, 28, 0.15);
-}
-
 .bg-layer { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
 .bg-grid {
   position: absolute; inset: 0;
@@ -341,7 +303,6 @@ const isLight = ref(false)
   background-size: 40px 40px;
   opacity: 0.3;
 }
-.theme-light .bg-grid { opacity: 0.4; }
 
 .home-header {
   position: relative; z-index: 10;
@@ -356,15 +317,6 @@ const isLight = ref(false)
 .brand-icon { color: var(--accent); }
 .brand-name { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 400; color: var(--text); letter-spacing: -0.01em; }
 .brand-name strong { font-weight: 800; color: var(--accent); }
-
-.theme-toggle {
-  background: var(--surface-2); border: 1px solid var(--border); border-radius: 7px;
-  color: var(--text-muted); cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  width: 36px; height: 34px;
-  transition: color 0.15s, border-color 0.15s;
-}
-.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
 
 /* Content */
 .content {

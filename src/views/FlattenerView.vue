@@ -1,31 +1,11 @@
 <template>
-  <div class="flattener" :class="{ 'light-mode': lightMode }">
+  <div class="flattener">
     <div class="bg-layer">
       <div class="bg-glow-1"></div>
       <div class="bg-glow-2"></div>
       <div class="bg-grid"></div>
     </div>
 
-    <header class="page-header">
-      <div class="header-left">
-        <RouterLink to="/" class="header-brand">
-          <span class="brand-logo">N</span>
-          <span class="brand-name">NottA<strong>Schema</strong></span>
-        </RouterLink>
-        <span class="page-title-chip">Flattener</span>
-      </div>
-      <div class="header-right">
-        <button class="icon-btn" @click="lightMode = !lightMode" :title="lightMode ? 'Dark mode' : 'Light mode'">
-          <svg v-if="lightMode" width="16" height="16" viewBox="0 0 22 22" fill="none">
-            <path d="M11 3v2M11 17v2M3 11H1M21 11h-2M5.22 5.22 3.8 3.8M18.2 18.2l-1.42-1.42M5.22 16.78 3.8 18.2M18.2 3.8l-1.42 1.42" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <circle cx="11" cy="11" r="4" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-          <svg v-else width="16" height="16" viewBox="0 0 22 22" fill="none">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
-    </header>
 
     <main class="main-content">
       <!-- Controls bar -->
@@ -94,7 +74,6 @@
 import { ref, computed } from 'vue'
 import { RouterLink } from 'vue-router'
 
-const lightMode = ref(false)
 const direction = ref<'flatten' | 'unflatten'>('flatten')
 const separator = ref('.')
 const input = ref('')
@@ -220,18 +199,8 @@ function exportOutput() {
 
 <style scoped>
 .flattener {
-  --bg: #141414; --surface: #1c1c1c; --surface-2: #222222;
-  --border: #2e2e2e; --border-2: #3a3a3a;
-  --text: #e8e2e2; --text-muted: #6a6060;
-  --accent: #dc2626; --accent-dim: rgba(220,38,38,0.10); --accent-glow: rgba(220,38,38,0.20);
   min-height: 100vh; display: flex; flex-direction: column;
   background: var(--bg); color: var(--text); position: relative;
-}
-.flattener.light-mode {
-  --bg: #f2f0f0; --surface: #ffffff; --surface-2: #f7f5f5;
-  --border: #e0d8d8; --border-2: #cfc6c6;
-  --text: #1f1414; --text-muted: #8a7070;
-  --accent: #b91c1c; --accent-dim: rgba(185,28,28,0.08); --accent-glow: rgba(185,28,28,0.15);
 }
 
 /* Background */
@@ -239,14 +208,9 @@ function exportOutput() {
 .bg-grid { position: absolute; inset: 0; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.3; }
 
 /* Header */
-.page-header { position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; height: 56px; border-bottom: 1px solid var(--border); background: rgba(20,20,20,0.7); backdrop-filter: blur(12px); flex-shrink: 0; }
-.flattener.light-mode .page-header { background: rgba(242,240,240,0.8); }
-.header-left { display: flex; align-items: center; gap: 14px; }
 .header-right { display: flex; align-items: center; gap: 8px; }
 .header-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; }
 .brand-logo { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 800; color: var(--accent); width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border: 1.5px solid rgba(220,38,38,0.35); border-radius: 4px; background: var(--accent-dim); flex-shrink: 0; }
-.brand-name { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 400; color: var(--text); }
-.brand-name strong { font-weight: 800; color: var(--accent); }
 .page-title-chip { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); background: var(--surface); border: 1px solid var(--border); border-radius: 5px; padding: 3px 8px; }
 
 /* Main */

@@ -9,11 +9,43 @@ html, body, #app {
   width: 100%;
 }
 
+/* ─── Global theme variables ─────────────────────────────── */
+:root {
+  --bg:          #141414;
+  --surface:     #1c1c1c;
+  --surface-2:   #222222;
+  --border:      #2e2e2e;
+  --border-2:    #3a3a3a;
+  --text:        #e8e2e2;
+  --text-muted:  #6a6060;
+  --accent:      #dc2626;
+  --accent-dim:  rgba(220, 38, 38, 0.10);
+  --accent-glow: rgba(220, 38, 38, 0.20);
+}
+
+html.light {
+  --bg:          #f2f0f0;
+  --surface:     #ffffff;
+  --surface-2:   #f7f5f5;
+  --border:      #e0d8d8;
+  --border-2:    #cfc6c6;
+  --text:        #1f1414;
+  --text-muted:  #8a7070;
+  --accent:      #b91c1c;
+  --accent-dim:  rgba(185, 28, 28, 0.08);
+  --accent-glow: rgba(185, 28, 28, 0.15);
+}
+
+html.light body { background: #f2f0f0; }
+html.light .bg-grid { opacity: 0.4 !important; }
+
 body {
   font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #141414;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
 }
 
 ::-webkit-scrollbar {

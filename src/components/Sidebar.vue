@@ -173,11 +173,18 @@
       </div>
     </nav>
 
+    <!-- Theme toggle at bottom -->
+    <div class="sidebar-footer">
+      <ThemeToggle />
+      <span class="nav-label sidebar-theme-label">Theme</span>
+    </div>
+
   </aside>
 </template>
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import ThemeToggle from './ThemeToggle.vue'
 
 defineProps<{ collapsed: boolean }>()
 defineEmits<{ (e: 'update:collapsed', v: boolean): void }>()
@@ -189,13 +196,13 @@ defineEmits<{ (e: 'update:collapsed', v: boolean): void }>()
   left: 0; top: 0; bottom: 0;
   z-index: 200;
   width: 52px;
-  background: #141414;
-  border-right: 1px solid #2e2e2e;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   align-items: stretch;
   overflow: hidden;
-  transition: width 0.24s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.24s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s, border-color 0.2s;
   flex-shrink: 0;
 }
 .sidebar.is-expanded { width: 220px; }
@@ -209,13 +216,13 @@ defineEmits<{ (e: 'update:collapsed', v: boolean): void }>()
   min-height: 52px;
   background: transparent;
   border: none;
-  border-bottom: 1px solid #2e2e2e;
-  color: #6a6060;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
   cursor: pointer;
   transition: color 0.15s, background 0.15s;
   flex-shrink: 0;
 }
-.toggle-btn:hover { color: #e8e2e2; background: #1c1c1c; }
+.toggle-btn:hover { color: var(--text); background: var(--surface); }
 
 /* Brand */
 .sidebar-brand {
@@ -231,16 +238,16 @@ defineEmits<{ (e: 'update:collapsed', v: boolean): void }>()
   font-family: 'Syne', sans-serif;
   font-size: 17px;
   font-weight: 800;
-  color: #dc2626;
+  color: var(--accent);
   width: 24px;
   height: 24px;
   min-width: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid rgba(220, 38, 38, 0.35);
+  border: 1.5px solid var(--accent-glow);
   border-radius: 5px;
-  background: rgba(220, 38, 38, 0.10);
+  background: var(--accent-dim);
   letter-spacing: -0.01em;
   line-height: 1;
   flex-shrink: 0;
@@ -254,7 +261,7 @@ defineEmits<{ (e: 'update:collapsed', v: boolean): void }>()
   font-family: 'Syne', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #e8e2e2;
+  color: var(--text);
   letter-spacing: -0.01em;
   white-space: nowrap;
   opacity: 0;
@@ -265,11 +272,11 @@ defineEmits<{ (e: 'update:collapsed', v: boolean): void }>()
   opacity: 1;
   transform: translateX(0);
 }
-.brand-text strong { font-weight: 800; color: #dc2626; }
+.brand-text strong { font-weight: 800; color: var(--accent); }
 
 .sidebar-divider {
   height: 1px;
-  background: #2e2e2e;
+  background: var(--border);
   margin: 0;
   flex-shrink: 0;
 }
@@ -292,7 +299,7 @@ defineEmits<{ (e: 'update:collapsed', v: boolean): void }>()
   gap: 2px;
 }
 .nav-group + .nav-group {
-  border-top: 1px solid #2e2e2e;
+  border-top: 1px solid var(--border);
   margin-top: 4px;
 }
 
@@ -302,7 +309,7 @@ defineEmits<{ (e: 'update:collapsed', v: boolean): void }>()
   font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: #6a6060;
+  color: var(--text-muted);
   white-space: nowrap;
   pointer-events: none;
   overflow: hidden;
@@ -324,19 +331,19 @@ defineEmits<{ (e: 'update:collapsed', v: boolean): void }>()
   padding: 0 12px;
   height: 38px;
   text-decoration: none;
-  color: #6a6060;
+  color: var(--text-muted);
   border-radius: 7px;
   margin: 0 6px;
   transition: color 0.15s, background 0.15s;
   overflow: hidden;
   flex-shrink: 0;
 }
-.nav-item:hover { color: #e8e2e2; background: #1c1c1c; }
+.nav-item:hover { color: var(--text); background: var(--surface); }
 .nav-item.router-link-active {
-  color: #dc2626;
-  background: rgba(220, 38, 38, 0.10);
+  color: var(--accent);
+  background: var(--accent-dim);
 }
-.nav-item.router-link-active .nav-icon svg { stroke: #dc2626; }
+.nav-item.router-link-active .nav-icon svg { stroke: var(--accent); }
 
 .nav-icon {
   display: flex;
@@ -359,5 +366,27 @@ defineEmits<{ (e: 'update:collapsed', v: boolean): void }>()
 .sidebar.is-expanded .nav-label {
   opacity: 1;
   transform: translateX(0);
+}
+
+/* Footer theme toggle */
+.sidebar-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 6px 10px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.sidebar-footer :deep(button) {
+  min-width: 40px;
+  width: 40px;
+  height: 34px;
+  flex-shrink: 0;
+}
+.sidebar-theme-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
 }
 </style>
