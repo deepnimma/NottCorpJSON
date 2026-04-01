@@ -199,6 +199,19 @@
           </div>
         </template>
 
+        <!-- ── Array item schema navigate (when itemType === 'object') ── -->
+        <template v-if="field.type === 'array' && field.itemType === 'object'">
+          <div class="detail-row">
+            <button class="nav-into-btn" @click="$emit('navigate-into-items', field)">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Edit item schema
+              <span class="prop-count">({{ field.itemProperties?.length ?? 0 }})</span>
+            </button>
+          </div>
+        </template>
+
         <!-- ── Object navigate ── -->
         <template v-if="field.type === 'object'">
           <div class="detail-row">
@@ -227,6 +240,7 @@ defineProps<{ field: SchemaField }>()
 defineEmits<{
   remove: [id: string]
   'navigate-into': [field: SchemaField]
+  'navigate-into-items': [field: SchemaField]
 }>()
 
 const expanded = ref(false)

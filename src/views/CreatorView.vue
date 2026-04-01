@@ -51,6 +51,7 @@
               :field="field"
               @remove="removeField"
               @navigate-into="navigateInto"
+              @navigate-into-items="navigateIntoItems"
             />
           </TransitionGroup>
 
@@ -186,10 +187,17 @@ function makeField(): SchemaField {
 
 function fieldsAtPath(root: SchemaField[], path: string[]): SchemaField[] {
   let arr = root
-  for (const id of path) {
-    const f = arr.find(x => x.id === id)
-    if (f?.properties) arr = f.properties
-    else break
+  for (const segment of path) {
+    if (segment.endsWith(':items')) {
+      const id = segment.slice(0, -6)
+      const f = arr.find(x => x.id === id)
+      if (f?.itemProperties) arr = f.itemProperties
+      else break
+    } else {
+      const f = arr.find(x => x.id === segment)
+      if (f?.properties) arr = f.properties
+      else break
+    }
   }
   return arr
 }
@@ -204,10 +212,20 @@ const breadcrumbs = computed(() => {
   const crumbs: Array<{ label: string; index: number }> = [{ label: 'Root', index: 0 }]
   let arr = state.fields
   for (let i = 0; i < navPath.value.length; i++) {
-    const f = arr.find(x => x.id === navPath.value[i])
-    if (f) {
-      crumbs.push({ label: f.name || 'unnamed', index: i + 1 })
-      if (f.properties) arr = f.properties
+    const segment = navPath.value[i]
+    if (segment.endsWith(':items')) {
+      const id = segment.slice(0, -6)
+      const f = arr.find(x => x.id === id)
+      if (f) {
+        crumbs.push({ label: `${f.name || 'unnamed'}[]`, index: i + 1 })
+        if (f.itemProperties) arr = f.itemProperties
+      }
+    } else {
+      const f = arr.find(x => x.id === segment)
+      if (f) {
+        crumbs.push({ label: f.name || 'unnamed', index: i + 1 })
+        if (f.properties) arr = f.properties
+      }
     }
   }
   return crumbs
@@ -241,7 +259,15 @@ function buildFieldDef(f: SchemaField): Record<string, unknown> {
     if (f.exclusiveMax != null) s.exclusiveMaximum = f.exclusiveMax
     if (f.multipleOf != null) s.multipleOf = f.multipleOf
   } else if (f.type === 'array') {
-    if (f.itemType) s.items = { type: f.itemType }
+    if (f.itemType === 'object' && f.itemProperties?.length) {
+      const itemProps = buildFieldProps(f.itemProperties)
+      const itemReq = f.itemProperties.filter(p => p.required && p.name).map(p => p.name)
+      const itemDef: Record<string, unknown> = { type: 'object', properties: itemProps }
+      if (itemReq.length) itemDef.required = itemReq
+      s.items = itemDef
+    } else if (f.itemType) {
+      s.items = { type: f.itemType }
+    }
     if (f.minItems != null) s.minItems = f.minItems
     if (f.maxItems != null) s.maxItems = f.maxItems
     if (f.uniqueItems) s.uniqueItems = true
@@ -288,6 +314,11 @@ function navigateInto(field: SchemaField) {
   navPath.value = [...navPath.value, field.id]
 }
 
+function navigateIntoItems(field: SchemaField) {
+  if (!field.itemProperties) field.itemProperties = []
+  navPath.value = [...navPath.value, `${field.id}:items`]
+}
+
 function navigateTo(index: number) {
   navPath.value = navPath.value.slice(0, index)
 }
@@ -326,6 +357,14 @@ function parseProperties(
       exclusiveMax: schema.exclusiveMaximum as number | undefined,
       multipleOf: schema.multipleOf as number | undefined,
       itemType: (schema.items as Record<string, unknown> | undefined)?.type as FieldType | undefined,
+      itemProperties:
+        (schema.items as Record<string, unknown> | undefined)?.type === 'object' &&
+        (schema.items as Record<string, unknown> | undefined)?.properties
+          ? parseProperties(
+              (schema.items as Record<string, unknown>).properties as Record<string, Record<string, unknown>>,
+              ((schema.items as Record<string, unknown>).required as string[]) || [],
+            )
+          : undefined,
       minItems: schema.minItems as number | undefined,
       maxItems: schema.maxItems as number | undefined,
       uniqueItems: schema.uniqueItems as boolean | undefined,
