@@ -41,6 +41,7 @@ export interface SchemaField {
   minItems?: number
   maxItems?: number
   uniqueItems?: boolean
+  itemProperties?: SchemaField[]  // properties of object items (when itemType === 'object')
 
   // Object properties (recursive)
   properties?: SchemaField[]
